@@ -9,7 +9,6 @@ $(function() {
   var button_is_down = false;
   var context = $canvas[0].getContext('2d');
 
-
   $(document).mouseup(function(e) {
     if(button_is_down) {
       var x = e.pageX - this.offsetLeft;
@@ -39,17 +38,21 @@ $(function() {
     }
   });
 
-  $form.submit(function(e) {
+  $form.on("submit", function(e) {
+    e.preventDefault();
 
     var url = $canvas[0].toDataURL('image/png'),
         img = document.createElement('img'),
         drawings_target = $('#drawings_target');
-
-    img.src = url;
     
     drawings_target.append(img);
+  
+    img.src = url;
 
     $hidden.val(url);
+    $.post($form.attr('action'), $form.serialize(), function(data) {
+        console.log("hi");
+      });
   });
 
   function clearCanvas() {
@@ -58,4 +61,6 @@ $(function() {
 
   $clear.click(clearCanvas);
   clearCanvas();
+
+
 });

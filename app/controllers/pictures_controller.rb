@@ -17,10 +17,11 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(params[:picture])
-
-    respond_to do |format|
-      format.js
-  	end
+    redirect_to @picture
+    
+   #  respond_to do |format|
+   #    format.html
+  	# end
   end
 
   def show
