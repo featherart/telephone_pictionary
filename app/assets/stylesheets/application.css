@@ -11,3 +11,10 @@
  *= require_self
  *= require_tree .
  */
+
+canvas 
+{
+  border: 1px solid;
+  cursor: crosshair;
+  display: block;
+}

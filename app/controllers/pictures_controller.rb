@@ -1,8 +1,29 @@
 class PicturesController < ApplicationController
   def index
-  	@picture = Picture.all
+  	@pictures = Picture.all
+  	@picture = Picture.new
+
+  	respond_to do |format|
+  	  format.html
+  	end
+  end
+
+  def new
+  	@picture = Picture.new
+  	respond_to do |format|
+  	  format.html
+  	end
   end
 
   def create
+    @picture = Picture.new(params[:picture])
+
+    respond_to do |format|
+      format.js
+  	end
+  end
+
+  def show
+  	@picture = Picture.find(params[:id])
   end
 end

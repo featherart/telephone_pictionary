@@ -10,6 +10,7 @@ TelephonePictionary::Application.routes.draw do
   # get "stories/index"
 
   # get "stories/create"
+  root to: "pictures#new"
 
   resources :stories
   resources :pictures
