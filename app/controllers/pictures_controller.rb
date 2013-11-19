@@ -12,16 +12,19 @@ class PicturesController < ApplicationController
   	@picture = Picture.new
   	respond_to do |format|
   	  format.html
+  	  format.js
   	end
   end
 
   def create
     @picture = Picture.new(params[:picture])
-    redirect_to @picture
-    
-   #  respond_to do |format|
-   #    format.html
-  	# end
+    @picture.save()
+
+    #redirect_to @picture
+
+    respond_to do |format|
+      format.js
+  	end
   end
 
   def show

@@ -14,12 +14,12 @@ class StoriesController < ApplicationController
   	# @picture = Picture.new(params[:picture])
   	# @phrase = Phrase.new(params[:phrase])
   	@story.save()
-
-  	respond_to do |format|
-  	  format.html
-
-  	end
-  	redirect_to @story
+  	render layout: false
+  	
+  	# respond_to do |format|
+  	#   format.json
+  	# end
+  	#redirect_to @story
   end
 
   def show
