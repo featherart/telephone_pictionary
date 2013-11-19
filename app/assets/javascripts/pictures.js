@@ -4,12 +4,10 @@ $(function() {
     return;
   }
   var $clear = $("#clear"),
-      $form = $("#new_drawing"),
-      $hidden = $("#drawing_image"),
+      $form = $("#new_picture"),
+      $hidden = $("#picture_image"),
       button_is_down = false,
       context = $canvas[0].getContext('2d');
-
-  console.log("here's form: " +$form);
 
   $(document).mouseup(function(e) {
     if(button_is_down) {
@@ -40,10 +38,7 @@ $(function() {
     }
   });
 
-  // this is where the data gets sent
-  // but it's returning a 406 and not entering this function
   $form.on("submit", function(event) {
-    console.log("hello");
     event.preventDefault();
 
     var url = $canvas[0].toDataURL('image/png'),
@@ -54,11 +49,25 @@ $(function() {
     img.src = url;
     $hidden.val(url);
 
-    $.post($form.attr('action'), $form.serialize(), function(data) {
-        console.log("data: " + data);
-        $("#new_drawings").append("hello");
-      });
-  });
+    // $.post($form.attr('action'), $form.serialize(), function(data) {
+    //     console.log("data: " + data);
+    //     $("#new_drawings").append("hello");
+    //   });
+    $.ajax({
+       url: "/",
+       type: "POST",
+       data: {
+         image: url
+       },
+       success: function( data ) {
+         console.log("data: " + data);
+         $form.hide();
+         $canvas.hide();
+         $("#new_drawings").append("<img src='"+url+"'>");
+       }
+     });      
+   });
+
   function clearCanvas() {
     context.clearRect(0,0,$canvas.width(),$canvas.height());   
   }
