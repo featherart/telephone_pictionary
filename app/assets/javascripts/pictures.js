@@ -38,6 +38,12 @@ $(function() {
     }
   });
 
+// // inside your view
+// events: {
+//   'submit form': 'handleFormSubmission'
+//   'click button.btn-default'
+// }
+
   $form.on("submit", function(event) {
     event.preventDefault();
 
@@ -49,10 +55,6 @@ $(function() {
     img.src = url;
     $hidden.val(url);
 
-    // $.post($form.attr('action'), $form.serialize(), function(data) {
-    //     console.log("data: " + data);
-    //     $("#new_drawings").append("hello");
-    //   });
     $.ajax({
        url: "/",
        type: "POST",
