@@ -1,13 +1,19 @@
-$form = $("#new_phrase");
+$(function() {
+	$form = $("#new_phrase");
 
-console.log("here's form: " + $form.length);
+	console.log("here's form: " + $form.length);
 
-$form.on("submit", function(event) {
-	console.log("in submit");
-	console.log(event);
-    event.preventDefault();
+	$form.on("submit", function(event) {
+		event.preventDefault();
+	
+		var phrase = $("#phrase_text").val();
+		console.log(phrase);
+	   
 
-    $.post(form.attr('action'), form.serialize(), function (data) {
-		$("#new_phrases").prepend(data);
+	    $.post($form.attr('action'), $form.serialize(), function (data) {
+	    	//console.log("in post: " +data);
+			$("#new_phrases").prepend(phrase);
+			$("#new_phrases").append("<h1>phrase</h1>");
+		});
 	});
 });
