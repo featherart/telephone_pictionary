@@ -4,6 +4,10 @@ class StoriesController < ApplicationController
   	@storyline = Storyline.new
   	@phrase = Phrase.new
   	@picture = Picture.new
+    @turn = Turn.first.turn_number
+    puts "$$$$$$$$$$"
+    puts @turn
+    puts "(((((((((((("
 
   	respond_to do |format|
   	  format.html
@@ -17,6 +21,9 @@ class StoriesController < ApplicationController
   	@phrase = Phrase.new(params[:phrase])
   	# @storyline = Storyline.new(params[:storyline])
   	# @story.save()
+  	#binding.pry this doesn't execute
+    @turn = @turn + 1
+
   	render layout: false
 
   	# respond_to do |format|
@@ -25,11 +32,11 @@ class StoriesController < ApplicationController
   	#redirect_to @story
   end
 
-  def show
-  	@story = Story.find(params[:id])
+  # def show
+  # 	@story = Story.find(params[:id])
 
-  	respond_to do |format|
-  	  format.js
-  	end
-  end
+  # 	respond_to do |format|
+  # 	  format.js
+  # 	end
+  # end
 end

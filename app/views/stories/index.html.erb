@@ -1,14 +1,24 @@
-<h1>New Drawing</h1>
+<!-- <#% if @turn.even? %>  -->
+<% if 2.even? %>
+	<div id="new_phrases">
+		<!--append here-->
+	</div>
+	<h1>New Drawing</h1>
+	<%= render 'picture_form' %>
+<% else %>
+	<div id="new_drawings">
+		<!--append here-->
+	</div>
+	<h1>New Phrase</h1>
+	<%= render 'phrase_form' %>
+<% end %>
 
-<%= render 'phrase_form' %>
-<br>
-<%= render 'picture_form' %>
+<%= @turn.inspect %>
 
 
-<div id="new_drawings">
-	<!--append here-->
-</div>
 
-<div id="new_phrases">
-	<!--append here-->
-</div>
+
+
+
+
+
