@@ -8,4 +8,4 @@
 
 # first part of story
 # this will get set by the initiator of a game
-Turn.create(turn_number: 1)
+Turn.create(turn_number: 0)

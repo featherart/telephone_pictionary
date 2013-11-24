@@ -1,22 +1,21 @@
-<!-- <#% if @turn.even? %>  -->
-<% if 2.even? %>
+<%= @turn.even? %> -- <%= @turn %>
+
+
+<% if @turn.even? && @turn != 0 %>
 	<div id="new_phrases">
 		<!--append here-->
 	</div>
 	<h1>New Drawing</h1>
 	<%= render 'picture_form' %>
-<% else %>
+<% end %>
+
+<% if @turn.odd? || @turn == 0 %>
 	<div id="new_drawings">
 		<!--append here-->
 	</div>
 	<h1>New Phrase</h1>
 	<%= render 'phrase_form' %>
 <% end %>
-
-<%= @turn.inspect %>
-
-
-
 
 
 

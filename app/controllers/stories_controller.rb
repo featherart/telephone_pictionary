@@ -4,11 +4,14 @@ class StoriesController < ApplicationController
   	@storyline = Storyline.new
   	@phrase = Phrase.new
   	@picture = Picture.new
-    @turn = Turn.first.turn_number
+    @turn = Turn.last.turn_number
+    
+    #@turn += 1
+    
     puts "$$$$$$$$$$"
     puts @turn
     puts "(((((((((((("
-
+      #binding.pry
   	respond_to do |format|
   	  format.html
   	end
@@ -23,7 +26,9 @@ class StoriesController < ApplicationController
   	# @story.save()
   	#binding.pry this doesn't execute
     @turn = @turn + 1
-
+    puts "$$$$$$$$$$$$"
+    puts @turn
+    puts "***********"
   	render layout: false
 
   	# respond_to do |format|

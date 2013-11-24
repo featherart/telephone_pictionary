@@ -10,6 +10,7 @@ class PicturesController < ApplicationController
 
   def new
   	@picture = Picture.new
+
   	respond_to do |format|
   	  format.js
   	end
@@ -18,9 +19,7 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(params[:picture])
     @picture.save()
-    @turn = @turn + 1
-    #redirect_to @picture
-
+    
     respond_to do |format|
       format.js
   	end
