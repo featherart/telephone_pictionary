@@ -6,9 +6,6 @@ $(function() {
 
     $form.on("submit", function(event) {
         event.preventDefault();
-        
-        $turn = $("input[name=phrase_turn").val();
-        console.log("here's turn again:  " + $turn);
         var phrase = $("#phrase_text").val();
         console.log(phrase);
     $.ajax({

@@ -1,4 +1,4 @@
-class StoriesController < ApplicationController
+class StorylinesController < ApplicationController
   def index
   	@storylines = Storyline.all
   	@storyline = Storyline.new
@@ -6,12 +6,6 @@ class StoriesController < ApplicationController
   	@picture = Picture.new
     @turn = Turn.last.turn_number
     
-    #@turn += 1
-    
-    puts "$$$$$$$$$$"
-    puts @turn
-    puts "(((((((((((("
-      #binding.pry
   	respond_to do |format|
   	  format.html
   	end
@@ -22,8 +16,8 @@ class StoriesController < ApplicationController
   	# creating and saving the storyline
   	@picture = Picture.new(params[:picture])
   	@phrase = Phrase.new(params[:phrase])
-  	# @storyline = Storyline.new(params[:storyline])
-  	# @story.save()
+  	@storyline = Storyline.new(params[:storyline])
+  	@story.save()
   	#binding.pry this doesn't execute
     @turn = @turn + 1
     puts "$$$$$$$$$$$$"

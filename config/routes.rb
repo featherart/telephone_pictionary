@@ -1,8 +1,8 @@
 TelephonePictionary::Application.routes.draw do
   
-  root to: "stories#index"
+  root to: "storylines#index"
 
-  resources :stories
+  resources :storylines
   resources :pictures
   resources :phrases
 end
