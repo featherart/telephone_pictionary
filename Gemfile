@@ -5,6 +5,7 @@ gem 'rails', '3.2.14'
 gem 'jquery-rails'
 gem 'pg'
 gem 'unicorn'
+gem 'devise'
 #gem 'angularjs-rails'
 
 group :development do
