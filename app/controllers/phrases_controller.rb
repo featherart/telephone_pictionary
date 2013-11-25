@@ -11,6 +11,10 @@ class PhrasesController < ApplicationController
   def create
   	@phrase = Phrase.new(params[:phrase])
   	@phrase.save
+    @storyline = Storyline.new
+    @storyline.phrase_id = @phrase.id
+    @storyline.turn = 2
+    @storyline.save
     
     render layout: false
   	respond_to do |format|

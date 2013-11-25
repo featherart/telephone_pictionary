@@ -1,11 +1,15 @@
 class StorylinesController < ApplicationController
   def index
-  	@storylines = Storyline.all
+  	#@storylines = Storyline.all
   	@storyline = Storyline.new
   	@phrase = Phrase.new
+    @phrase_id = @phrase.id
+
   	@picture = Picture.new
-    @turn = Turn.last.turn_number
-    
+    @picture_id = @picture.id
+    #@turn = Turn.last.turn_number
+    @turn = @storyline.turn #this will currently be nil
+                            # it needs to get set somehow
   	respond_to do |format|
   	  format.html
   	end
@@ -17,12 +21,10 @@ class StorylinesController < ApplicationController
   	@picture = Picture.new(params[:picture])
   	@phrase = Phrase.new(params[:phrase])
   	@storyline = Storyline.new(params[:storyline])
-  	@story.save()
-  	#binding.pry this doesn't execute
-    @turn = @turn + 1
-    puts "$$$$$$$$$$$$"
-    puts @turn
-    puts "***********"
+    @storyline.picture_id = @picture.id
+    @storyline.phrase_id = @phrase.id
+  	@storyline.save()
+  	binding.pry #this never executes - why?
   	render layout: false
 
   	# respond_to do |format|
